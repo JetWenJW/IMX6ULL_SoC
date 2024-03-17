@@ -1,0 +1,225 @@
+
+ledc.elf      檔案格式 elf32-littlearm
+
+
+.text 區段的反組譯：
+
+87800000 <_bss_start>:
+87800000:	87800198 			@ <UNDEFINED> instruction: 0x87800198
+
+87800004 <_bss_end>:
+87800004:	87800198 			@ <UNDEFINED> instruction: 0x87800198
+
+87800008 <_start>:
+87800008:	e10f0000 	mrs	r0, CPSR
+8780000c:	e3c0001f 	bic	r0, r0, #31
+87800010:	e3800013 	orr	r0, r0, #19
+87800014:	e129f000 	msr	CPSR_fc, r0
+87800018:	e51f0020 	ldr	r0, [pc, #-32]	@ 87800000 <_bss_start>
+8780001c:	e51f1020 	ldr	r1, [pc, #-32]	@ 87800004 <_bss_end>
+87800020:	e3a02000 	mov	r2, #0
+
+87800024 <bss_loop>:
+87800024:	e8a00004 	stmia	r0!, {r2}
+87800028:	e1500001 	cmp	r0, r1
+8780002c:	dafffffc 	ble	87800024 <bss_loop>
+87800030:	e51fd000 	ldr	sp, [pc, #-0]	@ 87800038 <bss_loop+0x14>
+87800034:	ea000035 	b	87800110 <__main_from_arm>
+87800038:	80200000 	eorhi	r0, r0, r0
+8780003c:	00001e41 	andeq	r1, r0, r1, asr #28
+87800040:	61656100 	cmnvs	r5, r0, lsl #2
+87800044:	01006962 	tsteq	r0, r2, ror #18
+87800048:	00000014 	andeq	r0, r0, r4, lsl r0
+8780004c:	412d3705 			@ <UNDEFINED> instruction: 0x412d3705
+87800050:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+87800054:	09010841 	stmdbeq	r1, {r0, r6, fp}
+87800058:	00040a02 	andeq	r0, r4, r2, lsl #20
+
+8780005c <clk_enable>:
+8780005c:	f44f 4380 	mov.w	r3, #16384	@ 0x4000
+87800060:	f04f 32ff 	mov.w	r2, #4294967295	@ 0xffffffff
+87800064:	f2c0 230c 	movt	r3, #524	@ 0x20c
+87800068:	669a      	str	r2, [r3, #104]	@ 0x68
+8780006a:	66da      	str	r2, [r3, #108]	@ 0x6c
+8780006c:	671a      	str	r2, [r3, #112]	@ 0x70
+8780006e:	675a      	str	r2, [r3, #116]	@ 0x74
+87800070:	679a      	str	r2, [r3, #120]	@ 0x78
+87800072:	67da      	str	r2, [r3, #124]	@ 0x7c
+87800074:	f8c3 2080 	str.w	r2, [r3, #128]	@ 0x80
+87800078:	4770      	bx	lr
+8780007a:	bf00      	nop
+
+8780007c <led_init>:
+8780007c:	2200      	movs	r2, #0
+8780007e:	b410      	push	{r4}
+87800080:	f2c0 220e 	movt	r2, #526	@ 0x20e
+87800084:	2405      	movs	r4, #5
+87800086:	f44f 4340 	mov.w	r3, #49152	@ 0xc000
+8780008a:	f241 00b0 	movw	r0, #4272	@ 0x10b0
+8780008e:	6694      	str	r4, [r2, #104]	@ 0x68
+87800090:	f2c0 2309 	movt	r3, #521	@ 0x209
+87800094:	f8c2 02f4 	str.w	r0, [r2, #756]	@ 0x2f4
+87800098:	2108      	movs	r1, #8
+8780009a:	2200      	movs	r2, #0
+8780009c:	6059      	str	r1, [r3, #4]
+8780009e:	f85d 4b04 	ldr.w	r4, [sp], #4
+878000a2:	601a      	str	r2, [r3, #0]
+878000a4:	4770      	bx	lr
+878000a6:	bf00      	nop
+
+878000a8 <delay_short>:
+878000a8:	b082      	sub	sp, #8
+878000aa:	9001      	str	r0, [sp, #4]
+878000ac:	9b01      	ldr	r3, [sp, #4]
+878000ae:	1e5a      	subs	r2, r3, #1
+878000b0:	9201      	str	r2, [sp, #4]
+878000b2:	2b00      	cmp	r3, #0
+878000b4:	d1fa      	bne.n	878000ac <delay_short+0x4>
+878000b6:	b002      	add	sp, #8
+878000b8:	4770      	bx	lr
+878000ba:	bf00      	nop
+
+878000bc <delay>:
+878000bc:	b082      	sub	sp, #8
+878000be:	9001      	str	r0, [sp, #4]
+878000c0:	9b01      	ldr	r3, [sp, #4]
+878000c2:	1e5a      	subs	r2, r3, #1
+878000c4:	9201      	str	r2, [sp, #4]
+878000c6:	b153      	cbz	r3, 878000de <delay+0x22>
+878000c8:	f240 73ff 	movw	r3, #2047	@ 0x7ff
+878000cc:	461a      	mov	r2, r3
+878000ce:	3b01      	subs	r3, #1
+878000d0:	2a00      	cmp	r2, #0
+878000d2:	d1fb      	bne.n	878000cc <delay+0x10>
+878000d4:	9b01      	ldr	r3, [sp, #4]
+878000d6:	1e5a      	subs	r2, r3, #1
+878000d8:	9201      	str	r2, [sp, #4]
+878000da:	2b00      	cmp	r3, #0
+878000dc:	d1f4      	bne.n	878000c8 <delay+0xc>
+878000de:	b002      	add	sp, #8
+878000e0:	4770      	bx	lr
+878000e2:	bf00      	nop
+
+878000e4 <led_on>:
+878000e4:	f44f 4340 	mov.w	r3, #49152	@ 0xc000
+878000e8:	f2c0 2309 	movt	r3, #521	@ 0x209
+878000ec:	681a      	ldr	r2, [r3, #0]
+878000ee:	f022 0208 	bic.w	r2, r2, #8
+878000f2:	601a      	str	r2, [r3, #0]
+878000f4:	4770      	bx	lr
+878000f6:	bf00      	nop
+
+878000f8 <led_off>:
+878000f8:	f44f 4340 	mov.w	r3, #49152	@ 0xc000
+878000fc:	f2c0 2309 	movt	r3, #521	@ 0x209
+87800100:	681a      	ldr	r2, [r3, #0]
+87800102:	f042 0208 	orr.w	r2, r2, #8
+87800106:	601a      	str	r2, [r3, #0]
+87800108:	4770      	bx	lr
+8780010a:	bf00      	nop
+8780010c:	0000      	movs	r0, r0
+	...
+
+87800110 <__main_from_arm>:
+87800110:	e51ff004 	ldr	pc, [pc, #-4]	@ 87800114 <__main_from_arm+0x4>
+87800114:	87800119 	usada8hi	r0, r9, r1, r0
+
+.text.startup 區段的反組譯：
+
+87800118 <main>:
+87800118:	f44f 4380 	mov.w	r3, #16384	@ 0x4000
+8780011c:	f04f 32ff 	mov.w	r2, #4294967295	@ 0xffffffff
+87800120:	f2c0 230c 	movt	r3, #524	@ 0x20c
+87800124:	2100      	movs	r1, #0
+87800126:	669a      	str	r2, [r3, #104]	@ 0x68
+87800128:	f2c0 210e 	movt	r1, #526	@ 0x20e
+8780012c:	66da      	str	r2, [r3, #108]	@ 0x6c
+8780012e:	f44f 4040 	mov.w	r0, #49152	@ 0xc000
+87800132:	671a      	str	r2, [r3, #112]	@ 0x70
+87800134:	2405      	movs	r4, #5
+87800136:	675a      	str	r2, [r3, #116]	@ 0x74
+87800138:	f2c0 2009 	movt	r0, #521	@ 0x209
+8780013c:	679a      	str	r2, [r3, #120]	@ 0x78
+8780013e:	67da      	str	r2, [r3, #124]	@ 0x7c
+87800140:	f8c3 2080 	str.w	r2, [r3, #128]	@ 0x80
+87800144:	f241 03b0 	movw	r3, #4272	@ 0x10b0
+87800148:	668c      	str	r4, [r1, #104]	@ 0x68
+8780014a:	2208      	movs	r2, #8
+8780014c:	f8c1 32f4 	str.w	r3, [r1, #756]	@ 0x2f4
+87800150:	2300      	movs	r3, #0
+87800152:	6042      	str	r2, [r0, #4]
+87800154:	6003      	str	r3, [r0, #0]
+87800156:	6803      	ldr	r3, [r0, #0]
+87800158:	f240 11f3 	movw	r1, #499	@ 0x1f3
+8780015c:	f023 0308 	bic.w	r3, r3, #8
+87800160:	6003      	str	r3, [r0, #0]
+87800162:	f240 73ff 	movw	r3, #2047	@ 0x7ff
+87800166:	461a      	mov	r2, r3
+87800168:	3b01      	subs	r3, #1
+8780016a:	2a00      	cmp	r2, #0
+8780016c:	d1fb      	bne.n	87800166 <main+0x4e>
+8780016e:	460b      	mov	r3, r1
+87800170:	3901      	subs	r1, #1
+87800172:	2b00      	cmp	r3, #0
+87800174:	d1f5      	bne.n	87800162 <main+0x4a>
+87800176:	6803      	ldr	r3, [r0, #0]
+87800178:	f240 11f3 	movw	r1, #499	@ 0x1f3
+8780017c:	f043 0308 	orr.w	r3, r3, #8
+87800180:	6003      	str	r3, [r0, #0]
+87800182:	f240 73ff 	movw	r3, #2047	@ 0x7ff
+87800186:	461a      	mov	r2, r3
+87800188:	3b01      	subs	r3, #1
+8780018a:	2a00      	cmp	r2, #0
+8780018c:	d1fb      	bne.n	87800186 <main+0x6e>
+8780018e:	460b      	mov	r3, r1
+87800190:	3901      	subs	r1, #1
+87800192:	2b00      	cmp	r3, #0
+87800194:	d1f5      	bne.n	87800182 <main+0x6a>
+87800196:	e7de      	b.n	87800156 <main+0x3e>
+
+.comment 區段的反組譯：
+
+00000000 <.comment>:
+   0:	3a434347 	bcc	10d0d24 <_bss_start-0x8672f2dc>
+   4:	4e472820 	cdpmi	8, 4, cr2, cr7, cr0, {1}
+   8:	31202955 			@ <UNDEFINED> instruction: 0x31202955
+   c:	2e302e34 	mrccs	14, 1, r2, cr0, cr4, {1}
+  10:	30322030 	eorscc	r2, r2, r0, lsr r0
+  14:	36303332 			@ <UNDEFINED> instruction: 0x36303332
+  18:	28203530 	stmdacs	r0!, {r4, r5, r8, sl, ip, sp}
+  1c:	65707865 	ldrbvs	r7, [r0, #-2149]!	@ 0xfffff79b
+  20:	656d6972 	strbvs	r6, [sp, #-2418]!	@ 0xfffff68e
+  24:	6c61746e 	cfstrdvs	mvd7, [r1], #-440	@ 0xfffffe48
+  28:	6d5b2029 	ldclvs	0, cr2, [fp, #-164]	@ 0xffffff5c
+  2c:	65747361 	ldrbvs	r7, [r4, #-865]!	@ 0xfffffc9f
+  30:	65722072 	ldrbvs	r2, [r2, #-114]!	@ 0xffffff8e
+  34:	69736976 	ldmdbvs	r3!, {r1, r2, r4, r5, r6, r8, fp, sp, lr}^
+  38:	63206e6f 			@ <UNDEFINED> instruction: 0x63206e6f
+  3c:	37656637 			@ <UNDEFINED> instruction: 0x37656637
+  40:	31366461 	teqcc	r6, r1, ror #8
+  44:	36626232 			@ <UNDEFINED> instruction: 0x36626232
+  48:	31636161 	cmncc	r3, r1, ror #2
+  4c:	38373064 	ldmdacc	r7!, {r2, r5, r6, ip, sp}
+  50:	35313264 	ldrcc	r3, [r1, #-612]!	@ 0xfffffd9c
+  54:	30373564 	eorscc	r3, r7, r4, ror #10
+  58:	34636530 	strbtcc	r6, [r3], #-1328	@ 0xfffffad0
+  5c:	30376665 	eorscc	r6, r7, r5, ror #12
+  60:	5d633365 	stclpl	3, cr3, [r3, #-404]!	@ 0xfffffe6c
+	...
+
+.ARM.attributes 區段的反組譯：
+
+00000000 <.ARM.attributes>:
+   0:	00002e41 	andeq	r2, r0, r1, asr #28
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000024 	andeq	r0, r0, r4, lsr #32
+  10:	412d3705 			@ <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	12040a02 	andne	r0, r4, #8192	@ 0x2000
+  20:	15011404 	strne	r1, [r1, #-1028]	@ 0xfffffbfc
+  24:	18031701 	stmdane	r3, {r0, r8, r9, sl, ip}
+  28:	1c021a01 			@ <UNDEFINED> instruction: 0x1c021a01
+  2c:	Address 0x2c is out of bounds.
+
