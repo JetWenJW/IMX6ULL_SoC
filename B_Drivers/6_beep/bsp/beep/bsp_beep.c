@@ -16,10 +16,11 @@ void beep_switch(int status)
 {
     if(status == ON)
     {
-        GPIO5 -> DR |= (1 << 1);        /* Set bit[1]   */
+        GPIO5 -> DR &=~ (1 << 1);       /* Clear bit[1] */
     }
     else if(status == OFF)
     {
-        GPIO5 -> DR &=~ (1 << 1);       /* Clear bit[1] */
+        
+        GPIO5 -> DR |= (1 << 1);        /* Set bit[1]   */
     }
 }
