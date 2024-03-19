@@ -105,15 +105,14 @@ NotUsed_Handler :
     bx r0
 
 /* IRQ_Handler Function Body */
-IRQ_Handler :
-IRQ_Handler:
+IRQ_Handler : 
 	push {lr}					/* Store le address */
 	push {r0-r3, r12}			/* Store r0-r3 & r12 register */
 
 	mrs r0, spsr				/* Read CPSR register */
 	push {r0}					/* Save CPSR register */
 
-	mrc p15, 4, r1, c15, c0, 0 /
+	mrc p15, 4, r1, c15, c0, 0 
 									
 	add r1, r1, #0X2000			
 	ldr r0, [r1, #0XC]			

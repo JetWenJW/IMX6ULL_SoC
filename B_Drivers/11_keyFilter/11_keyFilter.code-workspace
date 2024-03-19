@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"bsp_gpio.h": "c",
+			"bsp_keyfilter.h": "c"
+		}
+	}
+}
