@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"core_ca7.h": "c",
+			"bsp_int.h": "c"
+		}
+	}
+}
