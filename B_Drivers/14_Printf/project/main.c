@@ -9,6 +9,7 @@
 #include "bsp_epit.h"
 #include "bsp_keyFilter.h"
 #include "bsp_uart.h"
+#include "stdio.h"
 
 
 
@@ -23,18 +24,14 @@ int main(void)
     beep_init();                    /* Beep initaial        */
     key_init();                     /* Key initial          */
 
-    unsigned char a = 0;
     /* Set Led Blinky */
     while(1)
     {
-        put_string(" please enter a char: ");
-        a = get_char();
-        put_char(a);
-        put_string("\r\n");
-
-        put_string("Your char is : ");
-        put_char(a);
-        put_string("\r\n");
+        /* Use Printf in main (note: Not support float point) */
+        int a ,b;
+        printf("Please Enter 2 numbers: ");
+        scanf("%d %d",&a, &b);
+        printf("\r\n %d + %d = %d\r\n", &a, &b, a+b);
     }
     return 0;
 }

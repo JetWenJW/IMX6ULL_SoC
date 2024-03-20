@@ -25,10 +25,10 @@ Printf.elf      檔案格式 elf32-littlearm
 8780003c:	ee010f10 	mcr	15, 0, r0, cr1, cr0, {0}
 
 87800040 <_bss_start>:
-87800040:	87802c7c 			@ <UNDEFINED> instruction: 0x87802c7c
+87800040:	87802c84 	strhi	r2, [r0, r4, lsl #25]
 
 87800044 <_bss_end>:
-87800044:	87803988 	strhi	r3, [r0, r8, lsl #19]
+87800044:	87803990 			@ <UNDEFINED> instruction: 0x87803990
 87800048:	e51f0010 	ldr	r0, [pc, #-16]	@ 87800040 <_bss_start>
 8780004c:	e51f1010 	ldr	r1, [pc, #-16]	@ 87800044 <_bss_end>
 87800050:	e3a02000 	mov	r2, #0
@@ -433,7 +433,7 @@ Printf.elf      檔案格式 elf32-littlearm
 
 8780051c <key_getvalue>:
 8780051c:	b538      	push	{r3, r4, r5, lr}
-8780051e:	f642 3478 	movw	r4, #11128	@ 0x2b78
+8780051e:	f642 3480 	movw	r4, #11136	@ 0x2b80
 87800522:	f2c8 7480 	movt	r4, #34688	@ 0x8780
 87800526:	7823      	ldrb	r3, [r4, #0]
 87800528:	2b01      	cmp	r3, #1
@@ -609,7 +609,7 @@ Printf.elf      檔案格式 elf32-littlearm
 
 878006a4 <system_irq_init>:
 878006a4:	f240 62a1 	movw	r2, #1697	@ 0x6a1
-878006a8:	f642 437c 	movw	r3, #11388	@ 0x2c7c
+878006a8:	f642 4384 	movw	r3, #11396	@ 0x2c84
 878006ac:	f2c8 7280 	movt	r2, #34688	@ 0x8780
 878006b0:	f2c8 7380 	movt	r3, #34688	@ 0x8780
 878006b4:	2100      	movs	r1, #0
@@ -623,7 +623,7 @@ Printf.elf      檔案格式 elf32-littlearm
 878006ca:	bf00      	nop
 
 878006cc <system_register_irqhandler>:
-878006cc:	f642 437c 	movw	r3, #11388	@ 0x2c7c
+878006cc:	f642 4384 	movw	r3, #11396	@ 0x2c84
 878006d0:	f2c8 7380 	movt	r3, #34688	@ 0x8780
 878006d4:	eb03 03c0 	add.w	r3, r3, r0, lsl #3
 878006d8:	e9c3 1201 	strd	r1, r2, [r3, #4]
@@ -649,7 +649,7 @@ Printf.elf      檔案格式 elf32-littlearm
 87800712:	6051      	str	r1, [r2, #4]
 87800714:	2001      	movs	r0, #1
 87800716:	2102      	movs	r1, #2
-87800718:	f642 437c 	movw	r3, #11388	@ 0x2c7c
+87800718:	f642 4384 	movw	r3, #11396	@ 0x2c84
 8780071c:	6091      	str	r1, [r2, #8]
 8780071e:	f2c8 7380 	movt	r3, #34688	@ 0x8780
 87800722:	f8ce 0000 	str.w	r0, [lr]
@@ -673,7 +673,7 @@ Printf.elf      檔案格式 elf32-littlearm
 87800754:	289f      	cmp	r0, #159	@ 0x9f
 87800756:	d810      	bhi.n	8780077a <system_irqhandler+0x2a>
 87800758:	b538      	push	{r3, r4, r5, lr}
-8780075a:	f642 447c 	movw	r4, #11388	@ 0x2c7c
+8780075a:	f642 4484 	movw	r4, #11396	@ 0x2c84
 8780075e:	f2c8 7480 	movt	r4, #34688	@ 0x8780
 87800762:	eb04 02c0 	add.w	r2, r4, r0, lsl #3
 87800766:	6823      	ldr	r3, [r4, #0]
@@ -701,7 +701,7 @@ Printf.elf      檔案格式 elf32-littlearm
 8780079c:	2112      	movs	r1, #18
 8780079e:	f2c0 2009 	movt	r0, #521	@ 0x209
 878007a2:	f7ff bf09 	b.w	878005b8 <gpio_clearIntFlags>
-878007a6:	f243 1380 	movw	r3, #12672	@ 0x3180
+878007a6:	f243 1388 	movw	r3, #12680	@ 0x3188
 878007aa:	f2c8 7380 	movt	r3, #34688	@ 0x8780
 878007ae:	7818      	ldrb	r0, [r3, #0]
 878007b0:	fab0 f080 	clz	r0, r0
@@ -818,7 +818,7 @@ Printf.elf      檔案格式 elf32-littlearm
 878008d0:	f7ff fe5e 	bl	87800590 <gpio_pinread>
 878008d4:	2800      	cmp	r0, #0
 878008d6:	d1ea      	bne.n	878008ae <Filter_IRQHandler+0xe>
-878008d8:	f243 1381 	movw	r3, #12673	@ 0x3181
+878008d8:	f243 1389 	movw	r3, #12681	@ 0x3189
 878008dc:	f2c8 7380 	movt	r3, #34688	@ 0x8780
 878008e0:	7818      	ldrb	r0, [r3, #0]
 878008e2:	fab0 f080 	clz	r0, r0
@@ -999,7 +999,7 @@ Printf.elf      檔案格式 elf32-littlearm
 87800ab0:	2905      	cmp	r1, #5
 87800ab2:	4654      	mov	r4, sl
 87800ab4:	bf96      	itet	ls
-87800ab6:	f642 3048 	movwls	r0, #11080	@ 0x2b48
+87800ab6:	f642 3050 	movwls	r0, #11088	@ 0x2b50
 87800aba:	2105      	movhi	r1, #5
 87800abc:	f2c8 7080 	movtls	r0, #34688	@ 0x8780
 87800ac0:	f04f 0500 	mov.w	r5, #0
@@ -1463,9 +1463,9 @@ Printf.elf      檔案格式 elf32-littlearm
 
 87800f54 <printf>:
 87800f54:	b40f      	push	{r0, r1, r2, r3}
-87800f56:	f243 1084 	movw	r0, #12676	@ 0x3184
+87800f56:	f243 108c 	movw	r0, #12684	@ 0x318c
 87800f5a:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
-87800f5c:	f243 1584 	movw	r5, #12676	@ 0x3184
+87800f5c:	f243 158c 	movw	r5, #12684	@ 0x318c
 87800f60:	aa06      	add	r2, sp, #24
 87800f62:	f2c8 7080 	movt	r0, #34688	@ 0x8780
 87800f66:	f2c8 7580 	movt	r5, #34688	@ 0x8780
@@ -1502,7 +1502,7 @@ Printf.elf      檔案格式 elf32-littlearm
 87800fb4:	bf18      	it	ne
 87800fb6:	2c0d      	cmpne	r4, #13
 87800fb8:	d1f3      	bne.n	87800fa2 <scanf+0xa>
-87800fba:	f243 1084 	movw	r0, #12676	@ 0x3184
+87800fba:	f243 108c 	movw	r0, #12684	@ 0x318c
 87800fbe:	aa04      	add	r2, sp, #16
 87800fc0:	f2c8 7080 	movt	r0, #34688	@ 0x8780
 87800fc4:	2300      	movs	r3, #0
@@ -1514,11 +1514,11 @@ Printf.elf      檔案格式 elf32-littlearm
 87800fd8:	e8bd 4070 	ldmia.w	sp!, {r4, r5, r6, lr}
 87800fdc:	b004      	add	sp, #16
 87800fde:	4770      	bx	lr
-87800fe0:	87803584 	strhi	r3, [r0, r4, lsl #11]
+87800fe0:	8780358c 	strhi	r3, [r0, ip, lsl #11]
 
 87800fe4 <strnicmp>:
 87800fe4:	b32a      	cbz	r2, 87801032 <strnicmp+0x4e>
-87800fe6:	f642 3c7c 	movw	ip, #11132	@ 0x2b7c
+87800fe6:	f642 3c84 	movw	ip, #11140	@ 0x2b84
 87800fea:	b5f0      	push	{r4, r5, r6, r7, lr}
 87800fec:	3801      	subs	r0, #1
 87800fee:	188f      	adds	r7, r1, r2
@@ -1793,7 +1793,7 @@ Printf.elf      檔案格式 elf32-littlearm
 
 8780122c <strtok>:
 8780122c:	b5f0      	push	{r4, r5, r6, r7, lr}
-8780122e:	f643 1784 	movw	r7, #14724	@ 0x3984
+8780122e:	f643 178c 	movw	r7, #14732	@ 0x398c
 87801232:	460c      	mov	r4, r1
 87801234:	f2c8 7780 	movt	r7, #34688	@ 0x8780
 87801238:	b388      	cbz	r0, 8780129e <strtok+0x72>
@@ -2195,7 +2195,7 @@ Printf.elf      檔案格式 elf32-littlearm
 878015dc:	992e      	ldr	r1, [sp, #184]	@ 0xb8
 878015de:	2003      	movs	r0, #3
 878015e0:	f101 39ff 	add.w	r9, r1, #4294967295	@ 0xffffffff
-878015e4:	f642 3860 	movw	r8, #11104	@ 0x2b60
+878015e4:	f642 3868 	movw	r8, #11112	@ 0x2b68
 878015e8:	af0b      	add	r7, sp, #44	@ 0x2c
 878015ea:	f2c8 7880 	movt	r8, #34688	@ 0x8780
 878015ee:	2100      	movs	r1, #0
@@ -2424,7 +2424,7 @@ Printf.elf      檔案格式 elf32-littlearm
 87801894:	bb62      	cbnz	r2, 878018f0 <simple_strtoul+0x64>
 87801896:	f1bc 0f30 	cmp.w	ip, #48	@ 0x30
 8780189a:	d051      	beq.n	87801940 <simple_strtoul+0xb4>
-8780189c:	f642 357c 	movw	r5, #11132	@ 0x2b7c
+8780189c:	f642 3584 	movw	r5, #11140	@ 0x2b84
 878018a0:	4663      	mov	r3, ip
 878018a2:	f2c8 7580 	movt	r5, #34688	@ 0x8780
 878018a6:	220a      	movs	r2, #10
@@ -2454,7 +2454,7 @@ Printf.elf      檔案格式 elf32-littlearm
 878018ee:	bd70      	pop	{r4, r5, r6, pc}
 878018f0:	2a10      	cmp	r2, #16
 878018f2:	d009      	beq.n	87801908 <simple_strtoul+0x7c>
-878018f4:	f642 357c 	movw	r5, #11132	@ 0x2b7c
+878018f4:	f642 3584 	movw	r5, #11140	@ 0x2b84
 878018f8:	4663      	mov	r3, ip
 878018fa:	f2c8 7580 	movt	r5, #34688	@ 0x8780
 878018fe:	f815 e00c 	ldrb.w	lr, [r5, ip]
@@ -2463,7 +2463,7 @@ Printf.elf      檔案格式 elf32-littlearm
 87801908:	f1bc 0f30 	cmp.w	ip, #48	@ 0x30
 8780190c:	d1f2      	bne.n	878018f4 <simple_strtoul+0x68>
 8780190e:	7843      	ldrb	r3, [r0, #1]
-87801910:	f642 357c 	movw	r5, #11132	@ 0x2b7c
+87801910:	f642 3584 	movw	r5, #11140	@ 0x2b84
 87801914:	f2c8 7580 	movt	r5, #34688	@ 0x8780
 87801918:	5ce8      	ldrb	r0, [r5, r3]
 8780191a:	0780      	lsls	r0, r0, #30
@@ -2482,7 +2482,7 @@ Printf.elf      檔案格式 elf32-littlearm
 8780193a:	f00e 0044 	and.w	r0, lr, #68	@ 0x44
 8780193e:	e7b7      	b.n	878018b0 <simple_strtoul+0x24>
 87801940:	f890 c001 	ldrb.w	ip, [r0, #1]
-87801944:	f642 357c 	movw	r5, #11132	@ 0x2b7c
+87801944:	f642 3584 	movw	r5, #11140	@ 0x2b84
 87801948:	f2c8 7580 	movt	r5, #34688	@ 0x8780
 8780194c:	3001      	adds	r0, #1
 8780194e:	f815 e00c 	ldrb.w	lr, [r5, ip]
@@ -2531,7 +2531,7 @@ Printf.elf      檔案格式 elf32-littlearm
 878019b2:	d142      	bne.n	87801a3a <simple_strtoull+0x96>
 878019b4:	f1ba 0f30 	cmp.w	sl, #48	@ 0x30
 878019b8:	d067      	beq.n	87801a8a <simple_strtoull+0xe6>
-878019ba:	f642 367c 	movw	r6, #11132	@ 0x2b7c
+878019ba:	f642 3684 	movw	r6, #11140	@ 0x2b84
 878019be:	4653      	mov	r3, sl
 878019c0:	f2c8 7680 	movt	r6, #34688	@ 0x8780
 878019c4:	220a      	movs	r2, #10
@@ -2573,7 +2573,7 @@ Printf.elf      檔案格式 elf32-littlearm
 87801a36:	e8bd 87f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, pc}
 87801a3a:	2a10      	cmp	r2, #16
 87801a3c:	d009      	beq.n	87801a52 <simple_strtoull+0xae>
-87801a3e:	f642 367c 	movw	r6, #11132	@ 0x2b7c
+87801a3e:	f642 3684 	movw	r6, #11140	@ 0x2b84
 87801a42:	4653      	mov	r3, sl
 87801a44:	f2c8 7680 	movt	r6, #34688	@ 0x8780
 87801a48:	f816 e00a 	ldrb.w	lr, [r6, sl]
@@ -2582,7 +2582,7 @@ Printf.elf      檔案格式 elf32-littlearm
 87801a52:	f1ba 0f30 	cmp.w	sl, #48	@ 0x30
 87801a56:	d1f2      	bne.n	87801a3e <simple_strtoull+0x9a>
 87801a58:	7843      	ldrb	r3, [r0, #1]
-87801a5a:	f642 367c 	movw	r6, #11132	@ 0x2b7c
+87801a5a:	f642 3684 	movw	r6, #11140	@ 0x2b84
 87801a5e:	f2c8 7680 	movt	r6, #34688	@ 0x8780
 87801a62:	5cf1      	ldrb	r1, [r6, r3]
 87801a64:	0789      	lsls	r1, r1, #30
@@ -2601,7 +2601,7 @@ Printf.elf      檔案格式 elf32-littlearm
 87801a84:	f00e 0044 	and.w	r0, lr, #68	@ 0x44
 87801a88:	e7a1      	b.n	878019ce <simple_strtoull+0x2a>
 87801a8a:	f890 a001 	ldrb.w	sl, [r0, #1]
-87801a8e:	f642 367c 	movw	r6, #11132	@ 0x2b7c
+87801a8e:	f642 3684 	movw	r6, #11140	@ 0x2b84
 87801a92:	f2c8 7680 	movt	r6, #34688	@ 0x8780
 87801a96:	1c41      	adds	r1, r0, #1
 87801a98:	f816 e00a 	ldrb.w	lr, [r6, sl]
@@ -2658,7 +2658,7 @@ Printf.elf      檔案格式 elf32-littlearm
 87801b12:	d31f      	bcc.n	87801b54 <vsnprintf+0x60>
 87801b14:	2800      	cmp	r0, #0
 87801b16:	f000 82fc 	beq.w	87802112 <vsnprintf+0x61e>
-87801b1a:	f642 397c 	movw	r9, #11132	@ 0x2b7c
+87801b1a:	f642 3984 	movw	r9, #11140	@ 0x2b84
 87801b1e:	4656      	mov	r6, sl
 87801b20:	f2c8 7980 	movt	r9, #34688	@ 0x8780
 87801b24:	2825      	cmp	r0, #37	@ 0x25
@@ -3022,7 +3022,7 @@ Printf.elf      檔案格式 elf32-littlearm
 87801f98:	e5cf      	b.n	87801b3a <vsnprintf+0x46>
 87801f9a:	4675      	mov	r5, lr
 87801f9c:	f858 2b04 	ldr.w	r2, [r8], #4
-87801fa0:	f642 3040 	movw	r0, #11072	@ 0x2b40
+87801fa0:	f642 3048 	movw	r0, #11080	@ 0x2b48
 87801fa4:	f2c8 7080 	movt	r0, #34688	@ 0x8780
 87801fa8:	9305      	str	r3, [sp, #20]
 87801faa:	f5b2 6f80 	cmp.w	r2, #1024	@ 0x400
@@ -3270,7 +3270,7 @@ Printf.elf      檔案格式 elf32-littlearm
 8780220a:	780b      	ldrb	r3, [r1, #0]
 8780220c:	461f      	mov	r7, r3
 8780220e:	b1d3      	cbz	r3, 87802246 <vsscanf+0x42>
-87802210:	f642 347c 	movw	r4, #11132	@ 0x2b7c
+87802210:	f642 3484 	movw	r4, #11140	@ 0x2b84
 87802214:	460d      	mov	r5, r1
 87802216:	4606      	mov	r6, r0
 87802218:	4694      	mov	ip, r2
@@ -4031,136 +4031,141 @@ Printf.elf      檔案格式 elf32-littlearm
 .text.startup 區段的反組譯：
 
 87802ab0 <main>:
-87802ab0:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
-87802ab2:	f642 3714 	movw	r7, #11028	@ 0x2b14
-87802ab6:	f642 352c 	movw	r5, #11052	@ 0x2b2c
-87802aba:	f642 3630 	movw	r6, #11056	@ 0x2b30
-87802abe:	f2c8 7780 	movt	r7, #34688	@ 0x8780
-87802ac2:	f2c8 7580 	movt	r5, #34688	@ 0x8780
-87802ac6:	f2c8 7680 	movt	r6, #34688	@ 0x8780
-87802aca:	f7fd fe09 	bl	878006e0 <int_init>
-87802ace:	f7fd fc37 	bl	87800340 <imx6uclk_init>
-87802ad2:	f7fe f94f 	bl	87800d74 <delay_init>
-87802ad6:	f7fe f8ab 	bl	87800c30 <uart_init>
-87802ada:	f7fd fc21 	bl	87800320 <clk_enable>
-87802ade:	f7fd fc91 	bl	87800404 <led_init>
-87802ae2:	f7fd fccf 	bl	87800484 <beep_init>
-87802ae6:	f7fd fcf9 	bl	878004dc <key_init>
-87802aea:	4638      	mov	r0, r7
-87802aec:	f7fe f926 	bl	87800d3c <put_string>
-87802af0:	f7fe f934 	bl	87800d5c <get_char>
-87802af4:	4604      	mov	r4, r0
-87802af6:	f7fe f917 	bl	87800d28 <put_char>
-87802afa:	4628      	mov	r0, r5
-87802afc:	f7fe f91e 	bl	87800d3c <put_string>
-87802b00:	4630      	mov	r0, r6
-87802b02:	f7fe f91b 	bl	87800d3c <put_string>
-87802b06:	4620      	mov	r0, r4
-87802b08:	f7fe f90e 	bl	87800d28 <put_char>
-87802b0c:	4628      	mov	r0, r5
-87802b0e:	f7fe f915 	bl	87800d3c <put_string>
-87802b12:	e7ea      	b.n	87802aea <main+0x3a>
+87802ab0:	f642 3610 	movw	r6, #11024	@ 0x2b10
+87802ab4:	f642 352c 	movw	r5, #11052	@ 0x2b2c
+87802ab8:	f642 3434 	movw	r4, #11060	@ 0x2b34
+87802abc:	f2c8 7680 	movt	r6, #34688	@ 0x8780
+87802ac0:	f2c8 7580 	movt	r5, #34688	@ 0x8780
+87802ac4:	f2c8 7480 	movt	r4, #34688	@ 0x8780
+87802ac8:	b580      	push	{r7, lr}
+87802aca:	b082      	sub	sp, #8
+87802acc:	f7fd fe08 	bl	878006e0 <int_init>
+87802ad0:	f7fd fc36 	bl	87800340 <imx6uclk_init>
+87802ad4:	f7fe f94e 	bl	87800d74 <delay_init>
+87802ad8:	f7fe f8aa 	bl	87800c30 <uart_init>
+87802adc:	f7fd fc20 	bl	87800320 <clk_enable>
+87802ae0:	f7fd fc90 	bl	87800404 <led_init>
+87802ae4:	f7fd fcce 	bl	87800484 <beep_init>
+87802ae8:	f7fd fcf8 	bl	878004dc <key_init>
+87802aec:	4630      	mov	r0, r6
+87802aee:	f7fe fa31 	bl	87800f54 <printf>
+87802af2:	aa01      	add	r2, sp, #4
+87802af4:	4669      	mov	r1, sp
+87802af6:	4628      	mov	r0, r5
+87802af8:	f7fe fa4e 	bl	87800f98 <scanf>
+87802afc:	9b01      	ldr	r3, [sp, #4]
+87802afe:	aa01      	add	r2, sp, #4
+87802b00:	9f00      	ldr	r7, [sp, #0]
+87802b02:	4669      	mov	r1, sp
+87802b04:	4620      	mov	r0, r4
+87802b06:	443b      	add	r3, r7
+87802b08:	f7fe fa24 	bl	87800f54 <printf>
+87802b0c:	e7ee      	b.n	87802aec <main+0x3c>
+87802b0e:	bf00      	nop
 
 .rodata 區段的反組譯：
 
-87802b14 <CSWTCH.8-0x34>:
-87802b14:	656c7020 	strbvs	r7, [ip, #-32]!	@ 0xffffffe0
-87802b18:	20657361 	rsbcs	r7, r5, r1, ror #6
-87802b1c:	65746e65 	ldrbvs	r6, [r4, #-3685]!	@ 0xfffff19b
-87802b20:	20612072 	rsbcs	r2, r1, r2, ror r0
-87802b24:	72616863 	rsbvc	r6, r1, #6488064	@ 0x630000
-87802b28:	0000203a 	andeq	r2, r0, sl, lsr r0
-87802b2c:	00000a0d 	andeq	r0, r0, sp, lsl #20
-87802b30:	72756f59 	rsbsvc	r6, r5, #356	@ 0x164
-87802b34:	61686320 	cmnvs	r8, r0, lsr #6
-87802b38:	73692072 	cmnvc	r9, #114	@ 0x72
-87802b3c:	00203a20 	eoreq	r3, r0, r0, lsr #20
-87802b40:	4c554e3c 	mrrcmi	14, 3, r4, r5, cr12
-87802b44:	00003e4c 	andeq	r3, r0, ip, asr #28
+87802b10 <CSWTCH.8-0x40>:
+87802b10:	61656c50 	cmnvs	r5, r0, asr ip
+87802b14:	45206573 	strmi	r6, [r0, #-1395]!	@ 0xfffffa8d
+87802b18:	7265746e 	rsbvc	r7, r5, #1845493760	@ 0x6e000000
+87802b1c:	6e203220 	cdpvs	2, 2, cr3, cr0, cr0, {1}
+87802b20:	65626d75 	strbvs	r6, [r2, #-3445]!	@ 0xfffff28b
+87802b24:	203a7372 	eorscs	r7, sl, r2, ror r3
+87802b28:	00000000 	andeq	r0, r0, r0
+87802b2c:	25206425 	strcs	r6, [r0, #-1061]!	@ 0xfffffbdb
+87802b30:	00000064 	andeq	r0, r0, r4, rrx
+87802b34:	25200a0d 	strcs	r0, [r0, #-2573]!	@ 0xfffff5f3
+87802b38:	202b2064 	eorcs	r2, fp, r4, rrx
+87802b3c:	3d206425 	cfstrscc	mvf6, [r0, #-148]!	@ 0xffffff6c
+87802b40:	0d642520 	cfstr64eq	mvdx2, [r4, #-128]!	@ 0xffffff80
+87802b44:	0000000a 	andeq	r0, r0, sl
+87802b48:	4c554e3c 	mrrcmi	14, 3, r4, r5, cr12
+87802b4c:	00003e4c 	andeq	r3, r0, ip, asr #28
 
-87802b48 <CSWTCH.8>:
-87802b48:	00000004 	andeq	r0, r0, r4
-87802b4c:	00000003 	andeq	r0, r0, r3
-87802b50:	00000002 	andeq	r0, r0, r2
-87802b54:	00000001 	andeq	r0, r0, r1
-87802b58:	00000000 	andeq	r0, r0, r0
-87802b5c:	00000006 	andeq	r0, r0, r6
+87802b50 <CSWTCH.8>:
+87802b50:	00000004 	andeq	r0, r0, r4
+87802b54:	00000003 	andeq	r0, r0, r3
+87802b58:	00000002 	andeq	r0, r0, r2
+87802b5c:	00000001 	andeq	r0, r0, r1
+87802b60:	00000000 	andeq	r0, r0, r0
+87802b64:	00000006 	andeq	r0, r0, r6
 
-87802b60 <digits.0>:
-87802b60:	33323130 	teqcc	r2, #48, 2
-87802b64:	37363534 			@ <UNDEFINED> instruction: 0x37363534
-87802b68:	42413938 	submi	r3, r1, #56, 18	@ 0xe0000
-87802b6c:	46454443 	strbmi	r4, [r5], -r3, asr #8
+87802b68 <digits.0>:
+87802b68:	33323130 	teqcc	r2, #48, 2
+87802b6c:	37363534 			@ <UNDEFINED> instruction: 0x37363534
+87802b70:	42413938 	submi	r3, r1, #56, 18	@ 0xe0000
+87802b74:	46454443 	strbmi	r4, [r5], -r3, asr #8
 
 .ARM.exidx 區段的反組譯：
 
-87802b70 <.ARM.exidx>:
-87802b70:	7ffffe34 	svcvc	0x00fffe34
-87802b74:	00000001 	andeq	r0, r0, r1
+87802b78 <.ARM.exidx>:
+87802b78:	7ffffe2c 	svcvc	0x00fffe2c
+87802b7c:	00000001 	andeq	r0, r0, r1
 
 .data 區段的反組譯：
 
-87802b78 <release.0>:
-87802b78:	00000001 	andeq	r0, r0, r1
+87802b80 <release.0>:
+87802b80:	00000001 	andeq	r0, r0, r1
 
-87802b7c <_ctype>:
-87802b7c:	08080808 	stmdaeq	r8, {r3, fp}
-87802b80:	08080808 	stmdaeq	r8, {r3, fp}
-87802b84:	28282808 	stmdacs	r8!, {r3, fp, sp}
-87802b88:	08082828 	stmdaeq	r8, {r3, r5, fp, sp}
-87802b8c:	08080808 	stmdaeq	r8, {r3, fp}
-87802b90:	08080808 	stmdaeq	r8, {r3, fp}
+87802b84 <_ctype>:
+87802b84:	08080808 	stmdaeq	r8, {r3, fp}
+87802b88:	08080808 	stmdaeq	r8, {r3, fp}
+87802b8c:	28282808 	stmdacs	r8!, {r3, fp, sp}
+87802b90:	08082828 	stmdaeq	r8, {r3, r5, fp, sp}
 87802b94:	08080808 	stmdaeq	r8, {r3, fp}
 87802b98:	08080808 	stmdaeq	r8, {r3, fp}
-87802b9c:	101010a0 	andsne	r1, r0, r0, lsr #1
-87802ba0:	10101010 	andsne	r1, r0, r0, lsl r0
-87802ba4:	10101010 	andsne	r1, r0, r0, lsl r0
+87802b9c:	08080808 	stmdaeq	r8, {r3, fp}
+87802ba0:	08080808 	stmdaeq	r8, {r3, fp}
+87802ba4:	101010a0 	andsne	r1, r0, r0, lsr #1
 87802ba8:	10101010 	andsne	r1, r0, r0, lsl r0
-87802bac:	04040404 	streq	r0, [r4], #-1028	@ 0xfffffbfc
-87802bb0:	04040404 	streq	r0, [r4], #-1028	@ 0xfffffbfc
-87802bb4:	10100404 	andsne	r0, r0, r4, lsl #8
-87802bb8:	10101010 	andsne	r1, r0, r0, lsl r0
-87802bbc:	41414110 	cmpmi	r1, r0, lsl r1
-87802bc0:	01414141 	cmpeq	r1, r1, asr #2
-87802bc4:	01010101 	tsteq	r1, r1, lsl #2
-87802bc8:	01010101 	tsteq	r1, r1, lsl #2
+87802bac:	10101010 	andsne	r1, r0, r0, lsl r0
+87802bb0:	10101010 	andsne	r1, r0, r0, lsl r0
+87802bb4:	04040404 	streq	r0, [r4], #-1028	@ 0xfffffbfc
+87802bb8:	04040404 	streq	r0, [r4], #-1028	@ 0xfffffbfc
+87802bbc:	10100404 	andsne	r0, r0, r4, lsl #8
+87802bc0:	10101010 	andsne	r1, r0, r0, lsl r0
+87802bc4:	41414110 	cmpmi	r1, r0, lsl r1
+87802bc8:	01414141 	cmpeq	r1, r1, asr #2
 87802bcc:	01010101 	tsteq	r1, r1, lsl #2
 87802bd0:	01010101 	tsteq	r1, r1, lsl #2
-87802bd4:	10010101 	andne	r0, r1, r1, lsl #2
-87802bd8:	10101010 	andsne	r1, r0, r0, lsl r0
-87802bdc:	42424210 	submi	r4, r2, #16, 4
-87802be0:	02424242 	subeq	r4, r2, #536870916	@ 0x20000004
-87802be4:	02020202 	andeq	r0, r2, #536870912	@ 0x20000000
-87802be8:	02020202 	andeq	r0, r2, #536870912	@ 0x20000000
+87802bd4:	01010101 	tsteq	r1, r1, lsl #2
+87802bd8:	01010101 	tsteq	r1, r1, lsl #2
+87802bdc:	10010101 	andne	r0, r1, r1, lsl #2
+87802be0:	10101010 	andsne	r1, r0, r0, lsl r0
+87802be4:	42424210 	submi	r4, r2, #16, 4
+87802be8:	02424242 	subeq	r4, r2, #536870916	@ 0x20000004
 87802bec:	02020202 	andeq	r0, r2, #536870912	@ 0x20000000
 87802bf0:	02020202 	andeq	r0, r2, #536870912	@ 0x20000000
-87802bf4:	10020202 	andne	r0, r2, r2, lsl #4
-87802bf8:	08101010 	ldmdaeq	r0, {r4, ip}
+87802bf4:	02020202 	andeq	r0, r2, #536870912	@ 0x20000000
+87802bf8:	02020202 	andeq	r0, r2, #536870912	@ 0x20000000
+87802bfc:	10020202 	andne	r0, r2, r2, lsl #4
+87802c00:	08101010 	ldmdaeq	r0, {r4, ip}
 	...
-87802c1c:	101010a0 	andsne	r1, r0, r0, lsr #1
-87802c20:	10101010 	andsne	r1, r0, r0, lsl r0
-87802c24:	10101010 	andsne	r1, r0, r0, lsl r0
+87802c24:	101010a0 	andsne	r1, r0, r0, lsr #1
 87802c28:	10101010 	andsne	r1, r0, r0, lsl r0
 87802c2c:	10101010 	andsne	r1, r0, r0, lsl r0
 87802c30:	10101010 	andsne	r1, r0, r0, lsl r0
 87802c34:	10101010 	andsne	r1, r0, r0, lsl r0
 87802c38:	10101010 	andsne	r1, r0, r0, lsl r0
-87802c3c:	01010101 	tsteq	r1, r1, lsl #2
-87802c40:	01010101 	tsteq	r1, r1, lsl #2
+87802c3c:	10101010 	andsne	r1, r0, r0, lsl r0
+87802c40:	10101010 	andsne	r1, r0, r0, lsl r0
 87802c44:	01010101 	tsteq	r1, r1, lsl #2
 87802c48:	01010101 	tsteq	r1, r1, lsl #2
 87802c4c:	01010101 	tsteq	r1, r1, lsl #2
-87802c50:	10010101 	andne	r0, r1, r1, lsl #2
+87802c50:	01010101 	tsteq	r1, r1, lsl #2
 87802c54:	01010101 	tsteq	r1, r1, lsl #2
-87802c58:	02010101 	andeq	r0, r1, #1073741824	@ 0x40000000
-87802c5c:	02020202 	andeq	r0, r2, #536870912	@ 0x20000000
-87802c60:	02020202 	andeq	r0, r2, #536870912	@ 0x20000000
+87802c58:	10010101 	andne	r0, r1, r1, lsl #2
+87802c5c:	01010101 	tsteq	r1, r1, lsl #2
+87802c60:	02010101 	andeq	r0, r1, #1073741824	@ 0x40000000
 87802c64:	02020202 	andeq	r0, r2, #536870912	@ 0x20000000
 87802c68:	02020202 	andeq	r0, r2, #536870912	@ 0x20000000
 87802c6c:	02020202 	andeq	r0, r2, #536870912	@ 0x20000000
-87802c70:	10020202 	andne	r0, r2, r2, lsl #4
+87802c70:	02020202 	andeq	r0, r2, #536870912	@ 0x20000000
 87802c74:	02020202 	andeq	r0, r2, #536870912	@ 0x20000000
-87802c78:	02020202 	andeq	r0, r2, #536870912	@ 0x20000000
+87802c78:	10020202 	andne	r0, r2, r2, lsl #4
+87802c7c:	02020202 	andeq	r0, r2, #536870912	@ 0x20000000
+87802c80:	02020202 	andeq	r0, r2, #536870912	@ 0x20000000
 
 .ARM.attributes 區段的反組譯：
 
@@ -4406,7 +4411,7 @@ Printf.elf      檔案格式 elf32-littlearm
  244:	240b0501 	strcs	r0, [fp], #-1281	@ 0xfffffaff
  248:	2e100520 	cfmul64cs	mvdx0, mvdx0, mvdx0
  24c:	052e0505 	streq	r0, [lr, #-1285]!	@ 0xfffffafb
- 250:	053f0608 	ldreq	r0, [pc, #-1544]!	@ fffffc50 <__bss_end+0x787fc2c8>
+ 250:	053f0608 	ldreq	r0, [pc, #-1544]!	@ fffffc50 <__bss_end+0x787fc2c0>
  254:	2e061311 	mcrcs	3, 0, r1, cr6, cr1, {0}
  258:	03060405 	movweq	r0, #25605	@ 0x6405
  25c:	08052079 	stmdaeq	r5, {r0, r3, r4, r5, r6, sp}
@@ -4440,7 +4445,7 @@ Printf.elf      檔案格式 elf32-littlearm
 .debug_line_str 區段的反組譯：
 
 00000000 <.debug_line_str>:
-   0:	6d6f682f 	stclvs	8, cr6, [pc, #-188]!	@ ffffff4c <__bss_end+0x787fc5c4>
+   0:	6d6f682f 	stclvs	8, cr6, [pc, #-188]!	@ ffffff4c <__bss_end+0x787fc5bc>
    4:	63742f65 	cmnvs	r4, #404	@ 0x194
    8:	622d6777 	eorvs	r6, sp, #31195136	@ 0x1dc0000
    c:	646c6975 	strbtvs	r6, [ip], #-2421	@ 0xfffff68b
@@ -4476,7 +4481,7 @@ Printf.elf      檔案格式 elf32-littlearm
   84:	78756e69 	ldmdavc	r5!, {r0, r3, r5, r6, r9, sl, fp, sp, lr}^
   88:	756e672d 	strbvc	r6, [lr, #-1837]!	@ 0xfffff8d3
   8c:	69626165 	stmdbvs	r2!, {r0, r2, r5, r6, r8, sp, lr}^
-  90:	6c2f6668 	stcvs	6, cr6, [pc], #-416	@ fffffef8 <__bss_end+0x787fc570>
+  90:	6c2f6668 	stcvs	6, cr6, [pc], #-416	@ fffffef8 <__bss_end+0x787fc568>
   94:	63676269 	cmnvs	r7, #-1879048186	@ 0x90000006
   98:	682f0063 	stmdavs	pc!, {r0, r1, r5, r6}	@ <UNPREDICTABLE>
   9c:	2f656d6f 	svccs	0x00656d6f
@@ -4524,7 +4529,7 @@ Printf.elf      檔案格式 elf32-littlearm
   2c:	dc878026 	stcle	0, cr8, [r7], {38}	@ 0x26
   30:	01190204 	tsteq	r9, r4, lsl #4
   34:	4d3c0000 	ldcmi	0, cr0, [ip, #-0]
-  38:	1a878029 	bne	fe1e00e4 <__bss_end+0x769dc75c>
+  38:	1a878029 	bne	fe1e00e4 <__bss_end+0x769dc754>
   3c:	00200003 	eoreq	r0, r0, r3
   40:	00050000 	andeq	r0, r5, r0
   44:	00280401 	eoreq	r0, r8, r1, lsl #8
@@ -4934,7 +4939,7 @@ Printf.elf      檔案格式 elf32-littlearm
 .debug_str 區段的反組譯：
 
 00000000 <.debug_str>:
-   0:	6d6f682f 	stclvs	8, cr6, [pc, #-188]!	@ ffffff4c <__bss_end+0x787fc5c4>
+   0:	6d6f682f 	stclvs	8, cr6, [pc, #-188]!	@ ffffff4c <__bss_end+0x787fc5bc>
    4:	63742f65 	cmnvs	r4, #404	@ 0x194
    8:	622d6777 	eorvs	r6, sp, #31195136	@ 0x1dc0000
    c:	646c6975 	strbtvs	r6, [ip], #-2421	@ 0xfffff68b
