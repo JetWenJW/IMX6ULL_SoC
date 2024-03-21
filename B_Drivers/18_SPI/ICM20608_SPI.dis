@@ -6935,7 +6935,7 @@ ICM20608_SPI.elf      檔案格式 elf32-littlearm
 878049f4:	38303630 	ldmdacc	r0!, {r4, r5, r9, sl, ip, sp}
 878049f8:	53455420 	movtpl	r5, #21536	@ 0x5420
 878049fc:	00000054 	andeq	r0, r0, r4, asr r0
-87804a00:	39313032 	ldmdbcc	r1!, {r1, r4, r5, ip, sp}
+87804a00:	34323032 	ldrtcc	r3, [r2], #-50	@ 0xffffffce
 87804a04:	322f332f 	eorcc	r3, pc, #-1140850688	@ 0xbc000000
 87804a08:	00000037 	andeq	r0, r0, r7, lsr r0
 87804a0c:	324d4349 	subcc	r4, sp, #603979777	@ 0x24000001

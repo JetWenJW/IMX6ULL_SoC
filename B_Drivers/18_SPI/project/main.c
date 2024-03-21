@@ -84,7 +84,7 @@ int main(void)
 	tftlcd_dev.forecolour = LCD_RED;
 	lcd_show_string(50, 10, 400, 24, 24, (char*)"IMX6U SPI TEST");  
 	lcd_show_string(50, 40, 200, 16, 16, (char*)"ICM20608 TEST");  
-	lcd_show_string(50, 80, 200, 16, 16, (char*)"2019/3/27");  
+	lcd_show_string(50, 80, 200, 16, 16, (char*)"2024/3/27");  
 	
 	while(icm20608_init())		/* Initial ICM20608	 			*/
 	{
