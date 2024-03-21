@@ -1,0 +1,39 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": 
+            [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/bsp/clk",
+                "${workspaceFolder}/bsp/led",
+                "${workspaceFolder}/bsp/delay",
+                "${workspaceFolder}/bsp/beep",
+                "${workspaceFolder}/bsp/gpio",
+                "${workspaceFolder}/bsp/interrupt",
+                "${workspaceFolder}/bsp/exti",
+                "${workspaceFolder}/bsp/epit",
+                "${workspaceFolder}/bsp/keyFilter",
+                "${workspaceFolder}/bsp/uart",
+                "${workspaceFolder}/bsp/lcd",
+                "${workspaceFolder}/bsp/RTC",
+                "${workspaceFolder}/bsp/ap3216c",
+                "${workspaceFolder}/bsp/I2C",
+                "${workspaceFolder}/bsp/SPI",
+                "${workspaceFolder}/bsp/icm20608",
+                "${workspaceFolder}/bsp/ft5426",
+                "${workspaceFolder}/bsp/backlight",
+                "${workspaceFolder}/stdio/include",
+                "${workspaceFolder}/stdio/lib",
+                "${workspaceFolder}/imx6u",
+                "${workspaceFolder}/project"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
